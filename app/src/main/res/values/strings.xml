@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Compose \n Text</string>
+    <string name="greeting_string">Hello from String resource</string>
+</resources>
