@@ -3,6 +3,7 @@ package com.example.jetpack_compose_refresher
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -101,10 +102,12 @@ fun SimpleFilledTextFieldSample() {
 
 @Composable
 fun TextOverflow() {
-    Text(text = "Text Overflow\n")
-    Text(
-        text = stringResource(id = R.string.text_long_paragraph),
-        maxLines = 2,
-        overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
-    )
+    Column() {
+        Text(text = "Text Overflow\n")
+        Text(
+            text = stringResource(id = R.string.text_long_paragraph),
+            maxLines = 2,
+            overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
+        )
+    }
 }
