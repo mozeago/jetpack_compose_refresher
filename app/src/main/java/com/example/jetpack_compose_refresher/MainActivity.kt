@@ -3,8 +3,10 @@ package com.example.jetpack_compose_refresher
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.MaterialTheme
@@ -135,5 +137,15 @@ fun ClickableSample() {
             fontSize = 40.sp,
             modifier = Modifier.clickable { count.value += 1 },
         )
+    }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun LazyColumWithStickyHeader() {
+    LazyColumn{
+        stickyHeader {
+
+        }
     }
 }
