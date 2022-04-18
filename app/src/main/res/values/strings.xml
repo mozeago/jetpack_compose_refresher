@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Compose \n Text</string>
     <string name="greeting_string">Hello from String resource</string>
+    <string name="greeting_string_spanstyle">Hello from String SpanStyle</string>
+    <string name="text_long_paragraph">No part of this publication may be reproduced or transmitted in any form or
+by any means, mechanical or electronic, including photocopying or recording, or
+by any information storage and retrieval system, or transmitted by email without
+permission in writing from the publisher.\n
+While all attempts have been made to verify the information provided in this
+publication, neither the author nor the publisher assumes any responsibility for
+errors, omissions, or contrary interpretations of the subject matter herein.</string>
 </resources>
