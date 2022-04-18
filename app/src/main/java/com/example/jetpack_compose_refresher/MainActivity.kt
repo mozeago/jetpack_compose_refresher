@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -104,10 +105,12 @@ fun SimpleFilledTextFieldSample() {
 fun TextOverflow() {
     Column() {
         Text(text = "Text Overflow\n")
-        Text(
-            text = stringResource(id = R.string.text_long_paragraph),
-            maxLines = 2,
-            overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
-        )
+        SelectionContainer() {
+            Text(
+                text = stringResource(id = R.string.text_long_paragraph),
+                maxLines = 2,
+                overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
+            )
+        }
     }
 }
