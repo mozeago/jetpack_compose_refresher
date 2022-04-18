@@ -3,10 +3,8 @@ package com.example.jetpack_compose_refresher
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.MaterialTheme
@@ -14,14 +12,15 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.*
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -40,7 +39,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    TextOverflow()
+                    ClickableSample()
                 }
             }
         }
@@ -91,14 +90,21 @@ fun MultipleStyledText() {
 
 @Composable
 fun SimpleFilledTextFieldSample() {
-    Text(text = "Filled TextField")
-    var text by remember { mutableStateOf("first.last@domain.com") }
-    TextField(
-        value = text,
-        onValueChange = { text = it },
-        label = { Text("Email Address") },
-        keyboardOptions = KeyboardOptions(autoCorrect = true, keyboardType = KeyboardType.Password)
-    )
+    Column() {
+        Text(text = "Filled TextField")
+        var text by remember { mutableStateOf(" ") }
+        TextField(
+            value = text,
+            singleLine = true,
+            onValueChange = { trimZeros -> text = trimZeros.trimStart { it == '0' } },
+            label = { Text("Email Address") },
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Done,
+                autoCorrect = true,
+                keyboardType = KeyboardType.Password
+            ),
+        )
+    }
 }
 
 @Composable
@@ -112,5 +118,22 @@ fun TextOverflow() {
                 overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
             )
         }
+    }
+}
+
+@Composable
+fun ClickableSample() {
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        val count = remember {
+            mutableStateOf(0)
+        }
+        Text(
+            text = count.value.toString(),
+            fontSize = 40.sp,
+            modifier = Modifier.clickable { count.value += 1 },
+        )
     }
 }
